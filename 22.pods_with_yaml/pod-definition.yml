@@ -1,0 +1,15 @@
+# K8S YAML의 기본구성 apiVersion, kind, metadata, spec
+apiVersion: v1 # (String)
+kind: Pod # (String) Pod, Service, ReplicaSet, Deployment
+metadata: # (Dictionary) Metadata 안에는 K8S에서 지정된 key-value 가능
+  name: myapp-pod
+  lables: # labels 아래에는 원하는 대로 key-value 가질 수 있음
+    app: myapp
+    type: front-end
+spec: # (Dictionary)
+  containers: # (List/Array) 여러개의 컨테이너가 POD안에 있을 수 있기 떄문
+    - name: nginx-container
+      image: nginx
+
+
+# 실행명령어 kubectl create -f pod-definition.yml

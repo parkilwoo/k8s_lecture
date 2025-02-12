@@ -1,0 +1,23 @@
+apiVersion: apps/v1 # 만약 v1 이렇게하면 "no matches for /, kind=ReplicaSet" 에러 발생
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    trype: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+
+  replicas: 3
+  selector: # ReplicaContoller와 다른점 -> ReplicaSet에선 반드시 지정
+    matchLabels:
+      type: front-end
