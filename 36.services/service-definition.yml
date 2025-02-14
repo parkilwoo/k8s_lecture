@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service # Service 유형
+metadata:
+  name: myapp-service
+
+spec:
+  type: NodePort # Service 유형은 NodePort, ClusterIP, LoadBalancer 3가지의 타입이 있음
+  ports: # 배열!!!(여러개의 포트 정보를 나열 가능)
+    - targetPort: 80 # POD에 연결되는 targetport(명시 안하면 port 값 따라감)
+      port: 80 # NodePort일 경우 필수 값
+      nodePort: 30008 # Node의 포트(외부 포트?) 범위는 30000 ~ 32767 사용 가능
+  selector: # POD에 정의한 lables와 같아야 함
+    app: myapp
+    type: front-end

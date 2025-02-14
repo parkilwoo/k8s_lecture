@@ -19,5 +19,5 @@ spec:
 
   replicas: 3
   selector: # ReplicaContoller와 다른점 -> ReplicaSet에선 반드시 지정
-    matchLabels:
+    matchLabels: # Lable을 매칭해줘서 모니터링에 유용하게 함
       type: front-end
