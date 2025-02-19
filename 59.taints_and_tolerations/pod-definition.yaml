@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bee
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  tolerations: # Pod에 적용하는 견딜수 있는 조건을 니열 -> 노드에 적용하는 Taints와 일치해야함
+  - key: "spray"
+    value: "mortein"
+    effect: "NoEffect" # NoEffect, PreferNoSchedule, NoExecute
+    operator: "Equal" # Equal, Exists

@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: simple-webapp
+  labels:
+    app: App1
+    function: Front-end
+  annotations: # 세부사항 기록용(eg. BuildVersion)
+    buildVersion: 1.34
+    
