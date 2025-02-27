@@ -1,0 +1,20 @@
+apiVersion:
+kind:
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+  - name: data-processor
+    image: data-processor
+  affinity: # 선호도
+    nodeAffinity: # Node의 선호도를 지정한다
+      # DuringScheduling의 경우는 Required(필수여서 해당하는 레이블이 없으면 스케쥴링 X), Preferred(필수 아님, 해당하는 레이블 없으면 다른 노드)
+      # DuringExecution의 경우는 Ignored(이미 실행이 중인 pod은 무시), Required(실해중인 pod를 규칙에 맞지 않으면 쫓아냄)
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: size
+            operator: In # 연산자는 ==, !=, In, NotIn, Exists 가능
+            values:
+            - Large
+            - Medium
