@@ -14,7 +14,7 @@ spec:
         nodeSelectorTerms:
         - matchExpressions:
           - key: size
-            operator: In # 연산자는 ==, !=, In, NotIn, Exists 가능
+            operator: In # In, NotIn, Exists, DoseNotExist, Gt, Lt
             values:
             - Large
             - Medium
