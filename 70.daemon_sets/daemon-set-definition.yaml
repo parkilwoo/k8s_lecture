@@ -1,0 +1,19 @@
+# 클러스터내에서 새로운 노드가 추가될 때 기본적으로 사용이 되는 POD(?) 설정
+# UseCase - Monitoring solution, Logs Viewer, kube proxy
+# ReplicaSet과 비슷한 구조를 가진다
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitoring-daemon
+spec:
+  selector:
+    matchLabels:
+      app: monitoring-agent
+  template:
+    metadata:
+      labels:
+        app: monitoring-agent
+    spec:
+      containers:
+      - name: monitoring-agent
+        image: monitoring-agent
